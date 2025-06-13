@@ -4,6 +4,14 @@ class_name PlayerState
 
 var player: CharacterBody2D
 var anim_tree: AnimationTree
+var navigation_agent: NavigationAgent2D
+
+var companion_offset: Array[Vector2] = [
+	Vector2(25, 0),  # Default offset for companion player
+	Vector2(-40, 0),  # Alternative offset for companion player
+	Vector2(60, 0),  # Another alternative offset for companion player
+	Vector2(-80, 0),  # Yet another alternative offset for companion player
+] 
 
 const posible_states = {
 	Idle = "idle_state",

@@ -3,6 +3,7 @@ class_name PlayerStateMachine
 
 @export var player: CharacterBody2D
 @export var anim_tree: AnimationTree
+@export var navigation_agent: NavigationAgent2D
 @onready var anim_state = anim_tree.get("parameters/playback")
 
 @export var initial_state: PlayerState
@@ -18,6 +19,7 @@ func _ready():
 			states.append(child)
 			child.player = player
 			child.anim_tree = anim_tree
+			child.navigation_agent = navigation_agent
 			child.finished.connect(self._on_state_finished)
 			child.change_animation.connect(self._on_change_animation)
 	current_state.enter("")
@@ -36,7 +38,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_state_finished(next_state_name: String, data: Dictionary = {}) -> void:
 	if not has_node(next_state_name):
-		print("State not found:", next_state_name)
 		return
 	var previous_state_name = current_state.name
 	current_state.exit()
@@ -47,6 +48,4 @@ func _on_change_animation(animation_name: String) -> void:
 	if anim_state != null:
 		anim_state.travel(animation_name)
 	else:
-		print("AnimationTree not set or invalid.")
 		return
-	print("Changed animation to:", animation_name)
