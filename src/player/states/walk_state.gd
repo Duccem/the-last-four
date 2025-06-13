@@ -22,7 +22,7 @@ func selected_player() -> void:
 
 func companion_player() -> void:
 
-	if player.position.distance_to(player.target_player.global_position) > 30:
+	if player.position.distance_to(player.target_player.global_position) > 30 * player.companion_position:
 		var dir = (player.target_player.global_position - player.position).normalized()
 		set_animation_direction(dir)
 		player.velocity = dir * player.run_speed

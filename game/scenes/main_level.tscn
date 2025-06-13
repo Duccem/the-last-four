@@ -130,6 +130,12 @@ current_selected = true
 [node name="player2" parent="." instance=ExtResource("1_82843")]
 position = Vector2(235, 124)
 run_speed = 85.0
+companion_position = 1
+
+[node name="player3" parent="." instance=ExtResource("1_82843")]
+position = Vector2(265, 124)
+run_speed = 85.0
+companion_position = 2
 
 [node name="main_camera" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("3_s0cs3")]
 player = NodePath("../player")
