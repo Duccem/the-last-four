@@ -4,7 +4,6 @@ class_name PlayerState
 
 var player: CharacterBody2D
 var anim_tree: AnimationTree
-var navigation_agent: NavigationAgent2D
 
 var companion_offset: Array[Vector2] = [
 	Vector2(25, 0),  # Default offset for companion player

@@ -3,7 +3,7 @@ class_name PlayerStateMachine
 
 @export var player: CharacterBody2D
 @export var anim_tree: AnimationTree
-@export var navigation_agent: NavigationAgent2D
+@export var animation_controller: AnimationController
 @onready var anim_state = anim_tree.get("parameters/playback")
 
 @export var initial_state: PlayerState
@@ -19,7 +19,6 @@ func _ready():
 			states.append(child)
 			child.player = player
 			child.anim_tree = anim_tree
-			child.navigation_agent = navigation_agent
 			child.finished.connect(self._on_state_finished)
 			child.change_animation.connect(self._on_change_animation)
 	current_state.enter("")
@@ -47,5 +46,6 @@ func _on_state_finished(next_state_name: String, data: Dictionary = {}) -> void:
 func _on_change_animation(animation_name: String) -> void:
 	if anim_state != null:
 		anim_state.travel(animation_name)
+		animation_controller.change_sprite_animation(animation_name)
 	else:
 		return

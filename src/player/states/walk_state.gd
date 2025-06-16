@@ -21,7 +21,6 @@ func selected_player() -> void:
 		finished.emit(posible_states.Idle)
 
 func companion_player() -> void:
-
 	if player.position.distance_to(player.target_player.global_position) > 30 * player.companion_position:
 		var dir = (player.target_player.global_position - player.position).normalized()
 		set_animation_direction(dir)
