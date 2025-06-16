@@ -27,7 +27,6 @@ func companion_player() -> void:
 		player.velocity = dir * player.run_speed
 		player.move_and_slide()
 	else:
-		print("Target reached, stopping movement")
 		finished.emit(posible_states.Idle)
 		
 

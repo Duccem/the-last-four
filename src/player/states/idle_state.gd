@@ -19,5 +19,4 @@ func selected_player() -> void:
 func companion_player() -> void:
 	await get_tree().physics_frame
 	if player.position.distance_to(player.target_player.global_position) > 30 * player.companion_position:
-		print("Target not reached, moving to companion player position")
 		finished.emit(posible_states.Walk)
