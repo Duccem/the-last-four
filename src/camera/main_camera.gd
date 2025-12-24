@@ -13,8 +13,8 @@ func _ready():
 
 	limit_left = 0
 	limit_top = 0
-	limit_right = world_size.x
-	limit_bottom = world_size.y
+	limit_right = world_size.x -20
+	limit_bottom = world_size.y -20
 
 func _physics_process(_delta):
 	position = player.position

@@ -50,7 +50,9 @@ player_attack={
 [layer_names]
 
 2d_physics/layer_1="player"
+2d_physics/layer_2="player_hurt"
 2d_physics/layer_5="Terrain 1"
+2d_physics/layer_9="Enemy"
 
 [rendering]
 

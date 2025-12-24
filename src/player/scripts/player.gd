@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 @onready var state_machine: PlayerStateMachine = $state_machine
 @onready var animation_controller: AnimationController = $"animations"
+@onready var interactions_controller: PlayerInteractions = $"interactions"
+@onready var audio: AudioStreamPlayer2D = $"audio/AudioStreamPlayer2D"
 @onready var anim_tree: AnimationTree = $animator_tree
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")

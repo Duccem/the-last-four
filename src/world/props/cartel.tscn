@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfvr4pe7hko5k"]
+
+[ext_resource type="Script" path="res://src/world/props/cartel.gd" id="1_htrcl"]
+[ext_resource type="Texture2D" uid="uid://cnq88kncs74h8" path="res://src/world/sprites/mystic wood/objects/objects.png" id="1_hxe66"]
+[ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/hit_box/hitbox.tscn" id="2_7ap33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ujgo"]
+size = Vector2(14, 6)
+
+[node name="Cartel" type="Node2D"]
+script = ExtResource("1_htrcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hxe66")
+hframes = 16
+vframes = 13
+
+[node name="Hitbox" parent="." instance=ExtResource("2_7ap33")]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_3ujgo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_3ujgo")

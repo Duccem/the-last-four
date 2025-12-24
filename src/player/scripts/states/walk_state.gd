@@ -14,6 +14,7 @@ func process(_delta: float) -> PlayerState:
 	
 	player.velocity = player.direction * speed
 	player.animation_controller.set_animation_direction(player.direction)
+	player.interactions_controller.update_direction(player.direction)
 
 	return null
 
