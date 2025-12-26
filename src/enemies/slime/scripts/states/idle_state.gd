@@ -15,7 +15,7 @@ var _is_hurt: bool = false
 func enter() -> void:
 	enemy.anim_state.travel("idle")
 	enemy.agro_range.body_entered.connect(change_direction)
-	enemy.hit_box.area_entered.connect(receive_damage)
+	enemy.hit_box.damaged.connect(receive_damage)
 	_time_left = wander_delay
 
 func process(_delta: float) -> EnemyState:
@@ -34,11 +34,12 @@ func change_direction(_area) -> void:
 	on_range = true
 	walk.on_range = true
 
-func receive_damage(_area: Area2D) -> void:
+func receive_damage(_box: Hurtbox) -> void:
 	_is_hurt = true
+	enemy.receive_damage(_box.damage)
 	
 	
 func exit():
 	enemy.agro_range.body_entered.disconnect(change_direction)
-	if enemy.hit_box.area_entered.is_connected(receive_damage):
-		enemy.hit_box.area_entered.disconnect(receive_damage)
+	if enemy.hit_box.damaged.is_connected(receive_damage):
+		enemy.hit_box.damaged.disconnect(receive_damage)

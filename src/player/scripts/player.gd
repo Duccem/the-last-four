@@ -10,6 +10,7 @@ class_name Player
 @onready var spear_hit_box: Hurtbox = $"interactions/spear_hurtbox"
 
 var direction : Vector2 = Vector2.ZERO
+var invulnerable: bool = false
 
 func _ready():
   state_machine.initialize(self)

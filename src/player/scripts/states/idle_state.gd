@@ -31,7 +31,7 @@ func exit():
 	player.hit_box.damaged.disconnect(get_hurt)
 	pass
 
-func get_hurt(_amount: float, pos: Vector2) -> void:
+func get_hurt(box: Hurtbox) -> void:
 	hitted = true
-	hurt._enemy_pos = pos
+	hurt._enemy_pos = box.global_position
 

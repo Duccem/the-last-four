@@ -17,10 +17,13 @@ var _timer: float = 0.0
 func enter() -> void:
 	enemy.anim_state.travel("hurt")
 	enemy.animation_controller.set_animation_direction(enemy.direction)
+	
 	enemy.audio.stream = hurt_sound
 	enemy.audio.pitch_scale = randf_range(0.9, 1.1)
 	enemy.audio.play()
-	enemy.receive_damage(1)
+	
+	enemy.invulnerable = true
+	
 	_next_state = _pick_next_state()
 	_animation_finished = false
 	_timer = recovery_fallback
@@ -49,6 +52,7 @@ func exit() -> void:
 	if enemy.anim_player.animation_finished.is_connected(_on_animation_finished):
 		enemy.anim_player.animation_finished.disconnect(_on_animation_finished)
 	_animation_finished = false
+	enemy.invulnerable = false
 	
 func _pick_next_state() -> EnemyState:
 	if enemy.health_points <= 0:

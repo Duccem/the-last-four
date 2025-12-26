@@ -21,6 +21,8 @@ func enter():
   player.audio.pitch_scale = randf_range(0.9, 1.1)
   player.audio.play()
 
+  player.invulnerable = true
+
   _next_state = _pick_next_state()
   _animation_finished = false
   _timer = recovery_fallback
@@ -47,6 +49,7 @@ func exit() -> void:
     player.anim_player.animation_finished.disconnect(_on_animation_finished)
   player.anim_player.stop()
   player.anim_tree.active = true
+  player.invulnerable = false
   _animation_finished = false
 
 func _pick_next_state() -> PlayerState:

@@ -14,6 +14,7 @@ class_name  Enemy extends CharacterBody2D
 @export var player: Player
 
 var direction : Vector2 = Vector2.ZERO
+var invulnerable: bool = false
 
 func _ready():
   state_machine.initialize(self)
@@ -29,4 +30,6 @@ func update_movement_input() -> void:
   pass
 
 func receive_damage(damage: int) -> void:
+  if invulnerable:
+    return
   health_points -= damage

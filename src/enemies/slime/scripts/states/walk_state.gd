@@ -29,8 +29,9 @@ func stop_moving(_area) -> void:
 	on_range = false
 	idle.on_range = false
 
-func receive_damage(_area, _pos) -> void:
+func receive_damage(_box: Hurtbox) -> void:
 	_is_hurt = true
+	enemy.receive_damage(_box.damage)
 
 func exit():
 	enemy.agro_range.body_exited.disconnect(stop_moving)
