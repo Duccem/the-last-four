@@ -44,8 +44,6 @@ func process(delta: float) -> EnemyState:
 func exit() -> void:
 	if enemy.anim_player.animation_finished.is_connected(_on_animation_finished):
 		enemy.anim_player.animation_finished.disconnect(_on_animation_finished)
-	enemy.anim_player.stop()
-	enemy.anim_tree.active = true
 	_animation_finished = false
 	
 func _pick_next_state() -> EnemyState:

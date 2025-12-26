@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://chngrknv0vy18"]
+[gd_scene load_steps=58 format=3 uid="uid://chngrknv0vy18"]
 
 [ext_resource type="Script" path="res://src/enemies/slime/scripts/slime.gd" id="1_6nduj"]
 [ext_resource type="Texture2D" uid="uid://dr8gwpuupso51" path="res://src/enemies/slime/sprites/slime.png" id="1_xm2ry"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/hit_box/hitbox.tscn" id="7_dx876"]
 [ext_resource type="Script" path="res://src/enemies/slime/scripts/states/hurt_state.gd" id="7_knuks"]
 [ext_resource type="Script" path="res://src/enemies/slime/scripts/states/death_state.gd" id="8_32jnt"]
+[ext_resource type="PackedScene" uid="uid://lfmfgs4jioxn" path="res://src/hurt_box/hurtbox.tscn" id="10_tq8y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wuv8"]
 radius = 4.0
@@ -52,7 +53,7 @@ tracks/1/path = NodePath("Sprite2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0.717647), Color(0.882353, 0.176471, 0.517647, 0.584314), Color(1, 1, 1, 0.717647)]
@@ -80,7 +81,7 @@ tracks/1/path = NodePath("Sprite2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0.717647), Color(0.882353, 0.176471, 0.517647, 0.584314), Color(1, 1, 1, 0.717647)]
@@ -120,7 +121,7 @@ tracks/1/path = NodePath("Sprite2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0.717647), Color(0.882353, 0.176471, 0.517647, 0.584314), Color(1, 1, 1, 0.717647)]
@@ -148,7 +149,7 @@ tracks/1/path = NodePath("Sprite2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0.717647), Color(0.882353, 0.176471, 0.517647, 0.584314), Color(1, 1, 1, 0.717647)]
@@ -326,8 +327,48 @@ tracks/0/keys = {
 "values": [35, 36, 37, 38, 39, 40]
 }
 
+[sub_resource type="Animation" id="Animation_8lv7h"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyji0"]
 _data = {
+"RESET": SubResource("Animation_8lv7h"),
 "death": SubResource("Animation_uhotv"),
 "hurt_down": SubResource("Animation_p75h8"),
 "hurt_left": SubResource("Animation_t30cy"),
@@ -456,6 +497,9 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 radius = 64.0078
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c54fi"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbu8g"]
 radius = 5.0
 
 [node name="Slime" type="CharacterBody2D"]
@@ -463,18 +507,17 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_6nduj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_7wuv8")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.717647)
 position = Vector2(0, -4)
 texture = ExtResource("1_xm2ry")
-flip_h = true
 hframes = 7
 vframes = 13
-frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_7wuv8")
 
 [node name="animator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -511,6 +554,7 @@ script = ExtResource("8_32jnt")
 [node name="interactions" type="Node2D" parent="."]
 
 [node name="agro_range" type="Area2D" parent="interactions"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/agro_range"]
 shape = SubResource("CircleShape2D_cym2m")
@@ -521,6 +565,15 @@ debug_color = Color(0, 0.64873, 0.170823, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/hit_box"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_c54fi")
+debug_color = Color(0.956724, 0, 0.536406, 0.42)
+
+[node name="hurt_box" parent="interactions" instance=ExtResource("10_tq8y8")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/hurt_box"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_fbu8g")
+debug_color = Color(0.483781, 0.435883, 1, 0.42)
 
 [node name="animations_controller" type="Node2D" parent="."]
 script = ExtResource("4_1he3a")

@@ -3,12 +3,22 @@ extends PlayerState
 @export var speed: float = 100.0
 
 @onready var idle: PlayerState = $"../idle_state"
+@onready var attack: PlayerState = $"../attack_state"
+@onready var hurt: PlayerState = $"../hurt_state"
+
+var hitted: bool = false
 
 func enter() -> void:
 	player.animation_controller.change_sprite_animation("walk")
 	player.anim_state.travel("walk")
+	player.hit_box.damaged.connect(get_hurt)
 
 func process(_delta: float) -> PlayerState:
+
+	if hitted:
+		hitted = false
+		return hurt
+
 	if player.direction == Vector2.ZERO:
 		return idle
 	
@@ -16,3 +26,16 @@ func process(_delta: float) -> PlayerState:
 	player.animation_controller.set_animation_direction(player.direction)
 
 	return null
+
+func handle_input(_event: InputEvent) -> PlayerState:
+	if _event.is_action_pressed("player_attack"):
+		return attack
+	return null
+
+func exit():
+	player.hit_box.damaged.disconnect(get_hurt)
+
+func get_hurt(_amount: float, _pos: Vector2) -> void:
+	hitted = true
+	hurt._enemy_pos = _pos
+

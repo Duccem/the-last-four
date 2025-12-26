@@ -6,6 +6,8 @@ class_name Player
 @onready var anim_tree: AnimationTree = $animator_tree
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
+@onready var hit_box: Hitbox = $"interactions/hit_box"
+@onready var spear_hit_box: Hurtbox = $"interactions/spear_hurtbox"
 
 var direction : Vector2 = Vector2.ZERO
 
@@ -21,4 +23,3 @@ func _physics_process(_delta) -> void:
 
 func update_movement_input() -> void:
   direction = Input.get_vector("player_left", "player_right", "player_up", "player_down").normalized()
-

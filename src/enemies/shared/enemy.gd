@@ -6,6 +6,7 @@ class_name  Enemy extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
 @onready var hit_box: Hitbox = $"interactions/hit_box"
+@onready var hurt_box: Hurtbox = $"interactions/hurt_box"
 
 
 @export var health_points: int = 3

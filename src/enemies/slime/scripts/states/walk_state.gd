@@ -29,8 +29,7 @@ func stop_moving(_area) -> void:
 	on_range = false
 	idle.on_range = false
 
-func receive_damage(_area) -> void:
-	print("Slime received damage, switching to hurt state.")
+func receive_damage(_area, _pos) -> void:
 	_is_hurt = true
 
 func exit():
