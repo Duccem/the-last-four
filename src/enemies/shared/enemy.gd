@@ -5,9 +5,8 @@ class_name  Enemy extends CharacterBody2D
 @onready var animation_controller: EnemyAnimationsController = $"animations_controller"
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
+@onready var hit_box: Hitbox = $"interactions/hit_box"
 
-
-signal enemy_damaged(amount: int)
 
 @export var health_points: int = 3
 @export var player: Player
@@ -26,3 +25,6 @@ func _physics_process(_delta: float) -> void:
 
 func update_movement_input() -> void:
   pass
+
+func receive_damage(damage: int) -> void:
+  health_points -= damage
