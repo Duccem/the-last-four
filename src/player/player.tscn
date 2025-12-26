@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://b4ox1qu2uxyu6"]
+[gd_scene load_steps=67 format=3 uid="uid://b4ox1qu2uxyu6"]
 
 [ext_resource type="Script" path="res://src/player/scripts/player.gd" id="1_lc47q"]
 [ext_resource type="Script" path="res://src/player/scripts/animation_controller.gd" id="2_e5vep"]
@@ -9,12 +9,11 @@
 [ext_resource type="Script" path="res://src/player/scripts/states/walk_state.gd" id="5_h51ri"]
 [ext_resource type="Texture2D" uid="uid://b2crxp8rn2vub" path="res://src/player/sprites/The Male adventurer - Premium/Attack/Spear/attack_spear.png" id="5_lc7t1"]
 [ext_resource type="Script" path="res://src/player/scripts/states/attack_state.gd" id="9_8b80n"]
-[ext_resource type="Script" path="res://src/player/scripts/player_interactions.gd" id="10_e7yua"]
 [ext_resource type="PackedScene" uid="uid://lfmfgs4jioxn" path="res://src/hurt_box/hurtbox.tscn" id="10_e27i1"]
 [ext_resource type="AudioStream" uid="uid://fn0i7k3cqgly" path="res://src/player/sounds/SwordSwoosh.wav" id="10_ng0tv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsino"]
-size = Vector2(13, 23)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcldw"]
+size = Vector2(8, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kv82q"]
 radius = 5.0
@@ -45,6 +44,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("interactions/spear_hurtbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0fndq"]
 resource_name = "attack_down"
@@ -60,6 +83,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-6, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_mh7rl"]
@@ -77,6 +124,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-13, 11)]
+}
 
 [sub_resource type="Animation" id="Animation_8q4tn"]
 resource_name = "attack_down_right"
@@ -92,6 +163,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [40, 41, 42, 43, 44, 45, 46, 47]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-0.785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(6, 11)]
 }
 
 [sub_resource type="Animation" id="Animation_iar5a"]
@@ -109,6 +204,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [56, 57, 58, 59, 60, 61, 62, 63]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-12, 3)]
+}
 
 [sub_resource type="Animation" id="Animation_nci0a"]
 resource_name = "attack_right"
@@ -124,6 +243,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [48, 49, 50, 51, 52, 53, 54, 55]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(12, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_6j2w4"]
@@ -141,6 +284,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(6, -10)]
+}
 
 [sub_resource type="Animation" id="Animation_qa64w"]
 resource_name = "attack_up_left"
@@ -157,6 +324,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [16, 17, 18, 19, 20, 21, 22, 23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-0.785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-10, -8)]
+}
 
 [sub_resource type="Animation" id="Animation_m724h"]
 resource_name = "attack_up_right"
@@ -172,6 +363,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [32, 33, 34, 35, 36, 37, 38, 39]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(14, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_h1vm3"]
@@ -539,7 +754,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-13, -11)
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 16
+collision_mask = 17
 script = ExtResource("1_lc47q")
 
 [node name="animations" type="Node2D" parent="."]
@@ -563,6 +778,7 @@ visible = false
 texture = ExtResource("5_lc7t1")
 hframes = 8
 vframes = 8
+frame = 37
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("3_0b858")
@@ -578,16 +794,14 @@ script = ExtResource("9_8b80n")
 attack_sound = ExtResource("10_ng0tv")
 
 [node name="interactions" type="Node2D" parent="."]
-script = ExtResource("10_e7yua")
 
-[node name="Hurtbox" parent="interactions" instance=ExtResource("10_e27i1")]
-collision_mask = 256
+[node name="spear_hurtbox" parent="interactions" instance=ExtResource("10_e27i1")]
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/Hurtbox"]
-position = Vector2(-3.5, 11)
-shape = SubResource("RectangleShape2D_gsino")
-debug_color = Color(0.991652, 0, 0.262738, 0.42)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/spear_hurtbox"]
+scale = Vector2(1, 1.28)
+shape = SubResource("RectangleShape2D_wcldw")
+debug_color = Color(0.986015, 0, 0.327941, 0.42)
 
 [node name="audio" type="Node2D" parent="."]
 

@@ -3,8 +3,6 @@ class_name StateIdle extends PlayerState
 @onready var walk: PlayerState = $"../walk_state"
 @onready var attack: PlayerState = $"../attack_state"
 
-var input_movement: Vector2 = Vector2.ZERO
-
 func enter() -> void:
 	player.animation_controller.change_sprite_animation("idle")
 	player.anim_state.travel("idle")

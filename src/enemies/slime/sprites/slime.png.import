@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr8gwpuupso51"
-path="res://.godot/imported/slime.png-3ab0a5e41b073906ec8cdc9f38761972.ctex"
+path="res://.godot/imported/slime.png-2c54bab7d95c08d1da0dcf560bcd7c6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/world/sprites/mystic wood/characters/slime.png"
-dest_files=["res://.godot/imported/slime.png-3ab0a5e41b073906ec8cdc9f38761972.ctex"]
+source_file="res://src/enemies/slime/sprites/slime.png"
+dest_files=["res://.godot/imported/slime.png-2c54bab7d95c08d1da0dcf560bcd7c6d.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk8dpq4pk3dq4"]
+[gd_scene load_steps=8 format=3 uid="uid://bk8dpq4pk3dq4"]
 
 [ext_resource type="Texture2D" uid="uid://68wp8g6nslux" path="res://src/world/sprites/mystic wood/tilesets/plains.png" id="1_qk1kl"]
 [ext_resource type="PackedScene" uid="uid://b4ox1qu2uxyu6" path="res://src/player/player.tscn" id="2_yh1bb"]
 [ext_resource type="PackedScene" uid="uid://b76gyyn3m4fny" path="res://src/camera/camera.tscn" id="3_lpd10"]
 [ext_resource type="PackedScene" uid="uid://cfvr4pe7hko5k" path="res://src/world/props/cartel.tscn" id="4_d0ai4"]
+[ext_resource type="PackedScene" uid="uid://chngrknv0vy18" path="res://src/enemies/slime/slime.tscn" id="5_uokoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oiggs"]
 texture = ExtResource("1_qk1kl")
@@ -297,7 +298,7 @@ sources/0 = SubResource("TileSetAtlasSource_oiggs")
 [node name="main_level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(321, 175)
+position = Vector2(320, 177)
 tile_set = SubResource("TileSet_jf0cd")
 format = 2
 layer_0/name = "Capa 0"
@@ -320,3 +321,7 @@ position = Vector2(513, 360)
 
 [node name="Cartel3" parent="." instance=ExtResource("4_d0ai4")]
 position = Vector2(525, 299)
+
+[node name="Slime" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_uokoc")]
+position = Vector2(293, 144)
+player = NodePath("../player")

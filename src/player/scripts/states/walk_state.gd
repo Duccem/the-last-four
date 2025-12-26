@@ -1,8 +1,8 @@
+class_name PlayerWalkState
 extends PlayerState
 @export var speed: float = 100.0
 
 @onready var idle: PlayerState = $"../idle_state"
-@onready var attack: PlayerState = $"../attack_state"
 
 func enter() -> void:
 	player.animation_controller.change_sprite_animation("walk")
@@ -14,11 +14,5 @@ func process(_delta: float) -> PlayerState:
 	
 	player.velocity = player.direction * speed
 	player.animation_controller.set_animation_direction(player.direction)
-	player.interactions_controller.update_direction(player.direction)
 
-	return null
-
-func handle_input(_event: InputEvent) -> PlayerState:
-	if _event.is_action_released("player_attack"):
-		return attack
 	return null

@@ -2,7 +2,7 @@ class_name StateAttack extends PlayerState
 
 @onready var idle: PlayerState = $"../idle_state"
 @onready var walk: PlayerState = $"../walk_state"
-@onready var spear_hurt_box: Hurtbox = $"../../interactions/Hurtbox"
+@onready var spear_hurt_box: Hurtbox = $"../../interactions/spear_hurtbox"
 
 @export_range(1, 20, 0.5) var decelerate: float = 5.0
 @export var attack_sound: AudioStream
