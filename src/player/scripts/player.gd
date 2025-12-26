@@ -9,6 +9,8 @@ class_name Player
 @onready var hit_box: Hitbox = $"interactions/hit_box"
 @onready var spear_hit_box: Hurtbox = $"interactions/spear_hurtbox"
 
+@export var health_points: int = 10
+
 var direction : Vector2 = Vector2.ZERO
 var invulnerable: bool = false
 

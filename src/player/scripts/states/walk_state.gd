@@ -11,7 +11,7 @@ var hitted: bool = false
 func enter() -> void:
 	player.animation_controller.change_sprite_animation("walk")
 	player.anim_state.travel("walk")
-	player.hit_box.damaged.connect(get_hurt)
+	player.hit_box.damaged.connect(_on_damaged)
 
 func process(_delta: float) -> PlayerState:
 
@@ -27,15 +27,15 @@ func process(_delta: float) -> PlayerState:
 
 	return null
 
-func handle_input(_event: InputEvent) -> PlayerState:
-	if _event.is_action_pressed("player_attack"):
+func handle_input(event: InputEvent) -> PlayerState:
+	if event.is_action_pressed("player_attack"):
 		return attack
 	return null
 
 func exit():
-	player.hit_box.damaged.disconnect(get_hurt)
+	player.hit_box.damaged.disconnect(_on_damaged)
 
-func get_hurt(box: Hurtbox) -> void:
+func _on_damaged(box: Hurtbox) -> void:
 	hitted = true
 	hurt._enemy_pos = box.global_position
 

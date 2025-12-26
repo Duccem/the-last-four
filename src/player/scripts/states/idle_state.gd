@@ -9,7 +9,7 @@ var hitted: bool = false
 func enter() -> void:
 	player.animation_controller.change_sprite_animation("idle")
 	player.anim_state.travel("idle")
-	player.hit_box.damaged.connect(get_hurt)
+	player.hit_box.damaged.connect(_on_damaged)
 
 func process(_delta: float) -> PlayerState:
 	player.velocity = Vector2.ZERO
@@ -28,10 +28,10 @@ func handle_input(_event: InputEvent) -> PlayerState:
 	return null
 
 func exit():
-	player.hit_box.damaged.disconnect(get_hurt)
+	player.hit_box.damaged.disconnect(_on_damaged)
 	pass
 
-func get_hurt(box: Hurtbox) -> void:
+func _on_damaged(box: Hurtbox) -> void:
 	hitted = true
 	hurt._enemy_pos = box.global_position
 

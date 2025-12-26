@@ -12,7 +12,7 @@ var attacking: bool = false
 func enter() -> void:
   player.animation_controller.change_sprite_animation("attack")
   player.anim_state.travel("attack")
-  player.anim_tree.animation_finished.connect(end_attack)
+  player.anim_tree.animation_finished.connect(_on_animation_finished)
   
   attacking = true
 
@@ -21,11 +21,7 @@ func enter() -> void:
   player.audio.pitch_scale = randf_range(0.9, 1.1)
   player.audio.play()
   spear_hurt_box.monitoring = true
-
-func end_attack(_anim_name: String) -> void:
-  attacking = false
   
-
 func process(_delta: float) -> PlayerState:
   player.velocity -= player.velocity * decelerate * _delta
   if not attacking:
@@ -36,5 +32,8 @@ func process(_delta: float) -> PlayerState:
   return null
 
 func exit() -> void:
-  player.anim_tree.animation_finished.disconnect(end_attack)
+  player.anim_tree.animation_finished.disconnect(_on_animation_finished)
   spear_hurt_box.monitoring = false
+
+func _on_animation_finished(_anim_name: String) -> void:
+  attacking = false

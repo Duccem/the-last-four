@@ -9,9 +9,9 @@ extends EnemyState
 @onready var wander: EnemyState = $"../wander_state"
 @onready var death: EnemyState = $"../death_state"
 
-var _next_state: EnemyState
-var _animation_finished: bool = false
-var _timer: float = 0.0
+var next_state: EnemyState
+var animation_finished: bool = false
+var timer: float = 0.0
 
 
 func enter() -> void:
@@ -23,11 +23,11 @@ func enter() -> void:
 	enemy.audio.play()
 	
 	enemy.invulnerable = true
-	
-	_next_state = _pick_next_state()
-	_animation_finished = false
-	_timer = recovery_fallback
 	enemy.velocity = Vector2.ZERO
+	
+	next_state = _pick_next_state()
+	animation_finished = false
+	timer = recovery_fallback
 	if not enemy.anim_player.animation_finished.is_connected(_on_animation_finished):
 		enemy.anim_player.animation_finished.connect(_on_animation_finished)
 	
@@ -35,13 +35,13 @@ func enter() -> void:
 
 func process(delta: float) -> EnemyState:
 	enemy.velocity = Vector2.ZERO
-	_timer -= delta
-	if _animation_finished or _timer <= 0.0:
-		return _next_state
+	timer -= delta
+	if animation_finished or timer <= 0.0:
+		return next_state
 
 	var knockback_dir := -enemy.direction
 	if knockback_dir != Vector2.ZERO:
-		var knockback_factor := clampf(_timer / recovery_fallback, 0.0, 1.0)
+		var knockback_factor := clampf(timer / recovery_fallback, 0.0, 1.0)
 		var knockback_speed := 150.0
 		enemy.velocity = knockback_dir.normalized() * knockback_speed * knockback_factor
 
@@ -51,7 +51,7 @@ func process(delta: float) -> EnemyState:
 func exit() -> void:
 	if enemy.anim_player.animation_finished.is_connected(_on_animation_finished):
 		enemy.anim_player.animation_finished.disconnect(_on_animation_finished)
-	_animation_finished = false
+	animation_finished = false
 	enemy.invulnerable = false
 	
 func _pick_next_state() -> EnemyState:
@@ -65,4 +65,4 @@ func _pick_next_state() -> EnemyState:
 
 
 func _on_animation_finished(_anim_name: StringName) -> void:
-	_animation_finished = true
+	animation_finished = true

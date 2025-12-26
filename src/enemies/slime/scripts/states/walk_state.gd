@@ -6,16 +6,16 @@ extends EnemyState
 @onready var hurt: EnemyState = $"../hurt_state"
 
 var on_range: bool = false
-var _is_hurt: bool = false
+var is_hurt: bool = false
 
 func enter() -> void:
 	enemy.anim_state.travel("jump")
-	enemy.agro_range.body_exited.connect(stop_moving)
-	enemy.hit_box.damaged.connect(receive_damage)
+	enemy.agro_range.body_exited.connect(_on_enter_range)
+	enemy.hit_box.damaged.connect(_on_damaged)
 
 func process(_delta: float) -> EnemyState:
-	if _is_hurt:
-		_is_hurt = false
+	if is_hurt:
+		is_hurt = false
 		return hurt
 	if on_range == false:
 		return idle
@@ -25,15 +25,16 @@ func process(_delta: float) -> EnemyState:
 
 	return null
 
-func stop_moving(_area) -> void:
+func exit():
+	enemy.agro_range.body_exited.disconnect(_on_enter_range)
+	if enemy.hit_box.damaged.is_connected(_on_damaged):
+		enemy.hit_box.damaged.disconnect(_on_damaged)
+
+
+func _on_enter_range(_area) -> void:
 	on_range = false
 	idle.on_range = false
 
-func receive_damage(_box: Hurtbox) -> void:
-	_is_hurt = true
+func _on_damaged(_box: Hurtbox) -> void:
+	is_hurt = true
 	enemy.receive_damage(_box.damage)
-
-func exit():
-	enemy.agro_range.body_exited.disconnect(stop_moving)
-	if enemy.hit_box.damaged.is_connected(receive_damage):
-		enemy.hit_box.damaged.disconnect(receive_damage)

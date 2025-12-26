@@ -8,25 +8,25 @@ extends EnemyState
 var on_range: bool = false
 @export var wander_delay: float = 2.0
 
-var _time_left: float = 0.0
-var _is_hurt: bool = false
+var time_left: float = 0.0
+var is_hurt: bool = false
 
 
 func enter() -> void:
 	enemy.anim_state.travel("idle")
 	enemy.agro_range.body_entered.connect(change_direction)
-	enemy.hit_box.damaged.connect(receive_damage)
-	_time_left = wander_delay
+	enemy.hit_box.damaged.connect(_on_damaged)
+	time_left = wander_delay
 
 func process(_delta: float) -> EnemyState:
 	enemy.velocity = Vector2.ZERO
-	if _is_hurt:
-		_is_hurt = false
+	if is_hurt:
+		is_hurt = false
 		return hurt
 	if on_range:
 		return walk
-	_time_left -= _delta
-	if _time_left <= 0.0:
+	time_left -= _delta
+	if time_left <= 0.0:
 		return wander
 	return null
 
@@ -34,12 +34,12 @@ func change_direction(_area) -> void:
 	on_range = true
 	walk.on_range = true
 
-func receive_damage(_box: Hurtbox) -> void:
-	_is_hurt = true
-	enemy.receive_damage(_box.damage)
-	
-	
 func exit():
 	enemy.agro_range.body_entered.disconnect(change_direction)
-	if enemy.hit_box.damaged.is_connected(receive_damage):
-		enemy.hit_box.damaged.disconnect(receive_damage)
+	if enemy.hit_box.damaged.is_connected(_on_damaged):
+		enemy.hit_box.damaged.disconnect(_on_damaged)
+
+func _on_damaged(_box: Hurtbox) -> void:
+	is_hurt = true
+	enemy.receive_damage(_box.damage)
+	
