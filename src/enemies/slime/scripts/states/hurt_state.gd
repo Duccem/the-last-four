@@ -2,6 +2,7 @@ class_name SlimeHurtState
 extends EnemyState
 
 @export var recovery_fallback: float = 0.5
+@export var hurt_sound: AudioStream
 
 @onready var idle: EnemyState = $"../idle_state"
 @onready var walk: EnemyState = $"../walk_state"
@@ -16,6 +17,9 @@ var _timer: float = 0.0
 func enter() -> void:
 	enemy.anim_state.travel("hurt")
 	enemy.animation_controller.set_animation_direction(enemy.direction)
+	enemy.audio.stream = hurt_sound
+	enemy.audio.pitch_scale = randf_range(0.9, 1.1)
+	enemy.audio.play()
 	enemy.receive_damage(1)
 	_next_state = _pick_next_state()
 	_animation_finished = false

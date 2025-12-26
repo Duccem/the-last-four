@@ -1,6 +1,7 @@
 class_name PlayerHurtState extends PlayerState
 
 @export var recovery_fallback: float = 0.5
+@export var hurt_sound: AudioStream
 
 @onready var idle: PlayerState = $"../idle_state"
 @onready var walk: PlayerState = $"../walk_state"
@@ -15,6 +16,11 @@ func enter():
   player.anim_player.play("hurt")
   player.animation_controller.set_animation_direction(player.direction)
   player.anim_tree.active = false
+
+  player.audio.stream = hurt_sound
+  player.audio.pitch_scale = randf_range(0.9, 1.1)
+  player.audio.play()
+
   _next_state = _pick_next_state()
   _animation_finished = false
   _timer = recovery_fallback

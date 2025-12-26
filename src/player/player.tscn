@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://b4ox1qu2uxyu6"]
+[gd_scene load_steps=72 format=3 uid="uid://b4ox1qu2uxyu6"]
 
 [ext_resource type="Script" path="res://src/player/scripts/player.gd" id="1_lc47q"]
 [ext_resource type="Script" path="res://src/player/scripts/animation_controller.gd" id="2_e5vep"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://fn0i7k3cqgly" path="res://src/player/sounds/SwordSwoosh.wav" id="10_ng0tv"]
 [ext_resource type="Script" path="res://src/player/scripts/states/hurt_state.gd" id="11_m6kus"]
 [ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/hit_box/hitbox.tscn" id="12_lb3r6"]
+[ext_resource type="AudioStream" uid="uid://su2i6k644jdf" path="res://src/player/sounds/hit_player.wav" id="12_ofr7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcldw"]
 size = Vector2(8, 20)
@@ -854,11 +855,11 @@ attack_sound = ExtResource("10_ng0tv")
 [node name="hurt_state" type="Node" parent="state_machine"]
 script = ExtResource("11_m6kus")
 recovery_fallback = 0.3
+hurt_sound = ExtResource("12_ofr7i")
 
 [node name="interactions" type="Node2D" parent="."]
 
 [node name="spear_hurtbox" parent="interactions" instance=ExtResource("10_e27i1")]
-visible = false
 collision_mask = 256
 monitoring = false
 
