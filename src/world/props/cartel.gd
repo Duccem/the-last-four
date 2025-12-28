@@ -5,5 +5,5 @@ class_name Cartel extends Node2D
 func _ready():
 	hitbox.damaged.connect(take_damage)
 
-func take_damage(_amount: int) -> void:
+func take_damage(_hurt_box: Hurtbox) -> void:
 	queue_free()

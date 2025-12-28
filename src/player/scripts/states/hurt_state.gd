@@ -10,7 +10,7 @@ class_name PlayerHurtState extends PlayerState
 var next_state: PlayerState
 var animation_finished: bool = false
 var timer: float = 0.0
-var enemy_pos: Vector2
+var hurt_box: Hurtbox
 
 func enter():
   player.anim_player.play("hurt")
@@ -21,7 +21,8 @@ func enter():
   player.audio.pitch_scale = randf_range(0.9, 1.1)
   player.audio.play()
 
-  player.invulnerable = true
+  player.take_damage(hurt_box.damage)
+  player.make_invulnerable(recovery_fallback)
   player.velocity = Vector2.ZERO
 
   next_state = _pick_next_state()
@@ -36,7 +37,7 @@ func process(delta: float) -> PlayerState:
   if animation_finished or timer <= 0.0:
     return next_state
   
-  var knockback_dir := -player.direction if player.direction != Vector2.ZERO else (player.global_position - enemy_pos)
+  var knockback_dir := -player.direction if player.direction != Vector2.ZERO else (player.global_position - hurt_box.global_position)
   var knockback_factor := clampf(timer / recovery_fallback, 0.0, 1.0)
   var knockback_speed := 150.0
 

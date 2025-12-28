@@ -29,7 +29,14 @@ func _physics_process(_delta: float) -> void:
 func update_movement_input() -> void:
   pass
 
-func receive_damage(damage: int) -> void:
+func take_damage(damage: int) -> void:
   if invulnerable:
     return
   health_points -= damage
+
+func make_invulnerable(duration: float) -> void:
+  invulnerable = true
+  hit_box.monitoring = false
+  await get_tree().create_timer(duration).timeout
+  invulnerable = false
+  hit_box.monitoring = true

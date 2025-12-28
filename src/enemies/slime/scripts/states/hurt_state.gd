@@ -12,6 +12,7 @@ extends EnemyState
 var next_state: EnemyState
 var animation_finished: bool = false
 var timer: float = 0.0
+var hurt_box: Hurtbox
 
 
 func enter() -> void:
@@ -22,8 +23,9 @@ func enter() -> void:
 	enemy.audio.pitch_scale = randf_range(0.9, 1.1)
 	enemy.audio.play()
 	
-	enemy.invulnerable = true
 	enemy.velocity = Vector2.ZERO
+	enemy.take_damage(hurt_box.damage)
+	enemy.make_invulnerable(recovery_fallback)
 	
 	next_state = _pick_next_state()
 	animation_finished = false

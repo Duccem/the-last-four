@@ -22,8 +22,8 @@ func process(_delta: float) -> PlayerState:
 		return walk
 	return null
 
-func handle_input(_event: InputEvent) -> PlayerState:
-	if _event.is_action_pressed("player_attack"):
+func handle_input(event: InputEvent) -> PlayerState:
+	if event.is_action_pressed("player_attack"):
 		return attack
 	return null
 
@@ -33,5 +33,5 @@ func exit():
 
 func _on_damaged(box: Hurtbox) -> void:
 	hitted = true
-	hurt._enemy_pos = box.global_position
+	hurt.hurt_box = box
 

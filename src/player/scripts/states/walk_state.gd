@@ -37,5 +37,5 @@ func exit():
 
 func _on_damaged(box: Hurtbox) -> void:
 	hitted = true
-	hurt._enemy_pos = box.global_position
+	hurt.hurt_box = box
 

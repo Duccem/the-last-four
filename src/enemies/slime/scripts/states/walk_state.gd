@@ -35,6 +35,6 @@ func _on_enter_range(_area) -> void:
 	on_range = false
 	idle.on_range = false
 
-func _on_damaged(_box: Hurtbox) -> void:
+func _on_damaged(box: Hurtbox) -> void:
 	is_hurt = true
-	enemy.receive_damage(_box.damage)
+	hurt.hurt_box = box

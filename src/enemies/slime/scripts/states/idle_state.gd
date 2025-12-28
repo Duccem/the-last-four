@@ -41,5 +41,5 @@ func exit():
 
 func _on_damaged(_box: Hurtbox) -> void:
 	is_hurt = true
-	enemy.receive_damage(_box.damage)
+	hurt.hurt_box = _box
 	
