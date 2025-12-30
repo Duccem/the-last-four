@@ -11,12 +11,13 @@ class_name  Enemy extends CharacterBody2D
 
 
 @export var health_points: int = 3
-@export var player: Player
+var player: Player
 
 var direction : Vector2 = Vector2.ZERO
 var invulnerable: bool = false
 
 func _ready():
+  player = PlayerManager.player
   state_machine.initialize(self)
   animation_controller.initialize(self)
 

@@ -17,7 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+LevelManager="*res://src/global/level_manager.gd"
 PlayerHud="*res://src/GUI/player/player_hud.tscn"
+SceneTransition="*res://src/GUI/transitions/scene_transition.tscn"
+PlayerManager="*res://src/global/player_manager.gd"
 
 [input]
 
