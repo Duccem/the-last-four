@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfvr4pe7hko5k"]
 
 [ext_resource type="Script" path="res://src/world/props/cartel.gd" id="1_htrcl"]
-[ext_resource type="Texture2D" uid="uid://cnq88kncs74h8" path="res://src/world/sprites/mystic wood/objects/objects.png" id="1_hxe66"]
-[ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/hit_box/hitbox.tscn" id="2_7ap33"]
+[ext_resource type="Texture2D" uid="uid://cnq88kncs74h8" path="res://src/world/maps/sprites/mystic wood/objects/objects.png" id="1_hxe66"]
+[ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/shared/hit_box/hitbox.tscn" id="2_7ap33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bce65"]
 size = Vector2(14, 6)
