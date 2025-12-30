@@ -736,7 +736,7 @@ position = Vector2(1801, 503)
 position = Vector2(5470, 2471)
 
 [node name="second_level_transition" parent="." instance=ExtResource("10_bgg47")]
-position = Vector2(5602, 2503)
+position = Vector2(5600, 2496)
 target_level = "res://src/world/second_level.tscn"
 target_transition_point = "first_level_transition"
 size = 3

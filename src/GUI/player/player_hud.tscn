@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://s0082nnnm3ek" path="res://src/GUI/player/heart_gui.tscn" id="2_s22py"]
 
 [node name="PlayerHud" type="CanvasLayer"]
-layer = 2
 script = ExtResource("1_cg585")
 heart_prefab = ExtResource("2_s22py")
 
@@ -18,6 +17,7 @@ offset_top = 26.0
 offset_right = -224.0
 offset_bottom = 26.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="heart_container" type="HFlowContainer" parent="Control"]
 layout_mode = 1

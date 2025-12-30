@@ -33,7 +33,7 @@ func _ready() -> void:
 	_update_area()
 	if Engine.is_editor_hint():
 		return
-	
+		
 	monitoring = false
 	_place_player()
 

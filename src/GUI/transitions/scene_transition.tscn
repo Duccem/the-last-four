@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/GUI/transitions/scene_transition.gd" id="1_gv8ij"]
 
-[sub_resource type="Animation" id="Animation_3efmx"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_3bg5g"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,8 +17,8 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3bg5g"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3efmx"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1

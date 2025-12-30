@@ -1,0 +1,43 @@
+extends CanvasLayer
+
+@onready var save_button: Button = $Container/ButtonSave
+@onready var load_button: Button = $Container/ButtonLoad
+
+var is_paused: bool = false
+
+func _ready() -> void:
+	save_button.pressed.connect(_on_save_button_pressed)
+	load_button.pressed.connect(_on_load_button_pressed)
+	hide_menu()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if is_paused:
+			hide_menu()
+		else:
+			show_menu()
+		get_viewport().set_input_as_handled()
+
+func show_menu() -> void:
+	visible = true
+	is_paused = true
+	get_tree().paused = true
+	save_button.grab_focus()
+
+func hide_menu() -> void:
+	visible = false
+	is_paused = false
+	get_tree().paused = false
+
+func _on_save_button_pressed() -> void:
+	if not is_paused:
+		return
+	SaveManager.save_game()
+	hide_menu()
+
+func _on_load_button_pressed() -> void:
+	if not is_paused:
+		return
+	SaveManager.load_game()
+	await LevelManager.level_load_started
+	hide_menu()
