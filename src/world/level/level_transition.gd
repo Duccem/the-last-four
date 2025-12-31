@@ -76,8 +76,6 @@ func _on_body_entered(_p: Node2D) -> void:
 func _place_player() -> void:
 	if name != LevelManager.target_transition_area:
 		return
-	print("Global position:", global_position)
-	print("New position:", _new_position())
 	PlayerManager.set_player_position(_new_position())
 
 func _new_position() -> Vector2:

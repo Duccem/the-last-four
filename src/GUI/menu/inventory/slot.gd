@@ -25,3 +25,11 @@ func add_item(item_to_add: Item, count: int) -> int:
     quantity += to_add
     return to_add
   return 0
+
+func remove_item(count: int) -> void:
+  if is_empty():
+    return
+  var to_remove = min(count, quantity)
+  quantity -= to_remove
+  if quantity == 0:
+    item = null

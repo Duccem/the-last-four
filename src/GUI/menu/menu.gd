@@ -7,6 +7,7 @@ signal hidden
 @onready var load_button: Button = $wrap/Container/ButtonLoad
 @onready var exit_button: Button = $wrap/Container/ButtonExit
 @onready var item_description: Label = $wrap/ItemDescription
+@onready var audio_stream_player: AudioStreamPlayer = $wrap/AudioStreamPlayer
 
 var is_paused: bool = false
 
@@ -54,3 +55,13 @@ func _on_exit_button_pressed() -> void:
 
 func update_item_description(text: String) -> void:
 	item_description.text = text
+
+func play_audio( audio : AudioStream ) -> void:
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
+
+func item_focused_changed(slot: Slot) -> void:
+	if slot == null or slot.item == null:
+		update_item_description("")
+	else:
+		update_item_description(slot.item.description)

@@ -53,3 +53,7 @@ func make_invulnerable(duration: float) -> void:
   await get_tree().create_timer(duration).timeout
   invulnerable = false
   hit_box.monitoring = true
+
+func update_hp(amount: int) -> void:
+  health_points = clamp(health_points + amount, 0, max_health_points)
+  PlayerHud.update_hp(health_points, max_health_points)

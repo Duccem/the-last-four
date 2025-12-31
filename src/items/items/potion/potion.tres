@@ -1,7 +1,15 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b2doi8cvc2sui"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://b2doi8cvc2sui"]
 
 [ext_resource type="Script" path="res://src/items/scripts/item.gd" id="1_7ct6t"]
+[ext_resource type="AudioStream" uid="uid://bnerfvquudb" path="res://src/items/sounds/hp-up.wav" id="1_h2f31"]
 [ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/items/sprites/items.png" id="2_0moo8"]
+[ext_resource type="Script" path="res://src/items/effects/heal_effect.gd" id="2_kil34"]
+
+[sub_resource type="Resource" id="Resource_s3g1s"]
+script = ExtResource("2_kil34")
+heal_amount = 2
+audio_heal = ExtResource("1_h2f31")
+description = "Heal 2 points"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88dxm"]
 atlas = ExtResource("2_0moo8")
@@ -14,3 +22,4 @@ description = "Health potion"
 texture = SubResource("AtlasTexture_88dxm")
 stackable = true
 max_stack = 99
+effects = Array[Resource("res://src/items/scripts/item_effect.gd")]([SubResource("Resource_s3g1s")])

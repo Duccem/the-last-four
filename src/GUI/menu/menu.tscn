@@ -129,3 +129,5 @@ offset_right = 235.0
 offset_bottom = 396.0
 theme_override_font_sizes/font_size = 10
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="wrap"]
