@@ -1,13 +1,19 @@
 extends CanvasLayer
 
-@onready var save_button: Button = $Container/ButtonSave
-@onready var load_button: Button = $Container/ButtonLoad
+signal shown
+signal hidden
+
+@onready var save_button: Button = $wrap/Container/ButtonSave
+@onready var load_button: Button = $wrap/Container/ButtonLoad
+@onready var exit_button: Button = $wrap/Container/ButtonExit
+@onready var item_description: Label = $wrap/ItemDescription
 
 var is_paused: bool = false
 
 func _ready() -> void:
 	save_button.pressed.connect(_on_save_button_pressed)
 	load_button.pressed.connect(_on_load_button_pressed)
+	exit_button.pressed.connect(_on_exit_button_pressed)
 	hide_menu()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -22,12 +28,13 @@ func show_menu() -> void:
 	visible = true
 	is_paused = true
 	get_tree().paused = true
-	save_button.grab_focus()
+	shown.emit()
 
 func hide_menu() -> void:
 	visible = false
 	is_paused = false
 	get_tree().paused = false
+	hidden.emit()
 
 func _on_save_button_pressed() -> void:
 	if not is_paused:
@@ -41,3 +48,9 @@ func _on_load_button_pressed() -> void:
 	SaveManager.load_game()
 	await LevelManager.level_load_started
 	hide_menu()
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+
+func update_item_description(text: String) -> void:
+	item_description.text = text

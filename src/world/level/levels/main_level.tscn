@@ -724,7 +724,7 @@ script = ExtResource("6_vp6g0")
 position = Vector2(1711, 331)
 
 [node name="Cartel2" parent="." instance=ExtResource("7_y6n1q")]
-position = Vector2(2231, 1120)
+position = Vector2(1831, 516)
 
 [node name="Cartel3" parent="." instance=ExtResource("7_y6n1q")]
 position = Vector2(1201, 508)
@@ -733,12 +733,12 @@ position = Vector2(1201, 508)
 position = Vector2(1801, 503)
 
 [node name="Spawn" parent="." instance=ExtResource("9_b2vph")]
-position = Vector2(5470, 2471)
+position = Vector2(1711, 517)
 
 [node name="second_level_transition" parent="." instance=ExtResource("10_5rm87")]
-position = Vector2(5600, 2496)
+position = Vector2(1820, 598)
 target_level = "res://src/world/second_level.tscn"
 target_transition_point = "first_level_transition"
 size = 3
-side = 1
+side = 3
 snap_to_grid = true

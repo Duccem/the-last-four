@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dynuux8e8pqio"]
+
+[ext_resource type="Script" path="res://src/items/scripts/item.gd" id="1_bkcxh"]
+[ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/items/sprites/items.png" id="2_qaw1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1g32"]
+atlas = ExtResource("2_qaw1q")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_bkcxh")
+name = "Gem"
+description = "Power gem"
+texture = SubResource("AtlasTexture_f1g32")
