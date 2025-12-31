@@ -12,3 +12,5 @@ script = ExtResource("1_l4u4m")
 name = "Stone"
 description = "Stone"
 texture = SubResource("AtlasTexture_plt5i")
+stackable = true
+max_stack = 99

@@ -12,3 +12,5 @@ script = ExtResource("1_bkcxh")
 name = "Gem"
 description = "Power gem"
 texture = SubResource("AtlasTexture_f1g32")
+stackable = true
+max_stack = 99

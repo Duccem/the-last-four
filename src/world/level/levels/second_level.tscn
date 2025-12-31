@@ -21,7 +21,7 @@ position = Vector2(23, 1988)
 
 [node name="first_level_transition" parent="." instance=ExtResource("5_uctr7")]
 position = Vector2(16, 2000)
-target_level = "res://src/world/main_level.tscn"
+target_level = "res://src/world/level/levels/main_level.tscn"
 target_transition_point = "second_level_transition"
 size = 10
 side = 0

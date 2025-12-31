@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/GUI/menu/inventory/inventory.gd" id="1_md1cf"]
 [ext_resource type="Resource" uid="uid://dynuux8e8pqio" path="res://src/items/items/gem.tres" id="2_lwlm6"]
 [ext_resource type="Script" path="res://src/GUI/menu/inventory/slot.gd" id="3_ahqh7"]
-[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/items/items/potion.tres" id="4_pnnvt"]
+[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/items/items/potion/potion.tres" id="4_6igxo"]
 [ext_resource type="Resource" uid="uid://eyro3sjo4l80" path="res://src/items/items/stone.tres" id="5_miskj"]
 
 [sub_resource type="Resource" id="Resource_sol56"]
@@ -13,7 +13,7 @@ quantity = 2
 
 [sub_resource type="Resource" id="Resource_wimx8"]
 script = ExtResource("3_ahqh7")
-item = ExtResource("4_pnnvt")
+item = ExtResource("4_6igxo")
 quantity = 3
 
 [sub_resource type="Resource" id="Resource_iwobb"]

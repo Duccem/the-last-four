@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b2doi8cvc2sui"]
 
-[ext_resource type="Script" path="res://src/items/scripts/item.gd" id="1_ktr08"]
-[ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/items/sprites/items.png" id="2_huu8t"]
+[ext_resource type="Script" path="res://src/items/scripts/item.gd" id="1_7ct6t"]
+[ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/items/sprites/items.png" id="2_0moo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88dxm"]
-atlas = ExtResource("2_huu8t")
+atlas = ExtResource("2_0moo8")
 region = Rect2(32, 0, 32, 32)
 
 [resource]
-script = ExtResource("1_ktr08")
+script = ExtResource("1_7ct6t")
 name = "Health Potion"
 description = "Health potion"
 texture = SubResource("AtlasTexture_88dxm")
+stackable = true
+max_stack = 99
