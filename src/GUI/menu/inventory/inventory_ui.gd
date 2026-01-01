@@ -8,16 +8,16 @@ func _ready() -> void:
   Menu.shown.connect(update_inventory)
   Menu.hidden.connect(clear_inventory)
   clear_inventory()
-  pass
 
 func clear_inventory() -> void:
   for child in get_children():
-    child.queue_free()
+    child.set_slot_data(null)
 
 func update_inventory() -> void:
-  for item in data.slots:
-    var slot_instance: SlotUI = ITEM_SLOT_SCENE.instantiate()
-    add_child(slot_instance)
-    slot_instance.slot = item
+  clear_inventory()
+  for index in data.slots.size():
+    var slot: Slot = data.slots[index]
+    var slot_ui: SlotUI = get_child(index) as SlotUI
+    slot_ui.set_slot_data(slot)
   
   get_child(0).grab_focus()

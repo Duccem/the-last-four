@@ -22,6 +22,7 @@ var save_data: Dictionary = {
 func save_game() -> void:
   update_player_data()
   update_scene_path()
+  update_inventory_data()
   var file: FileAccess = FileAccess.open(SAVE_PATH + "savegame.sav", FileAccess.WRITE)
   var data_to_save: String = JSON.stringify(save_data)
   file.store_line(data_to_save)
@@ -45,6 +46,7 @@ func load_game() -> void:
 
   PlayerManager.set_player_health(save_data.player.hp, save_data.player.max_hp)
   PlayerManager.set_player_position(Vector2(save_data.player.pos_x, save_data.player.pos_y))
+  PlayerManager.INVENTORY.inventory_from_primitives(save_data.items)
 
   await LevelManager.level_load_finished
 
@@ -61,3 +63,6 @@ func update_scene_path() -> void:
   for c in get_tree().root.get_children():
     if c is Level:
       save_data.scene_path = c.scene_file_path
+
+func update_inventory_data() -> void:
+  save_data.items = PlayerManager.INVENTORY.inventory_to_primitives()

@@ -12,9 +12,11 @@ func _ready():
   focus_exited.connect(_on_focus_exited)
   pressed.connect(_on_item_pressed)
 
+
+## ERROR AQUI
 func set_slot_data(value: Slot) -> void:
   slot = value
-  if slot == null:
+  if slot == null or slot.item == null:
     return
   texture_rect.texture = slot.item.texture
   label.text = str(slot.quantity)
