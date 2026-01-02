@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqud063ap72nb"]
+[gd_scene load_steps=13 format=3 uid="uid://cqud063ap72nb"]
 
 [ext_resource type="Script" path="res://src/interactables/treasure_chest/treasure_chest.gd" id="1_i1j51"]
 [ext_resource type="Texture2D" uid="uid://d4n04kcq7ugmx" path="res://src/interactables/treasure_chest/treasure-chest.png" id="2_lxcxb"]
 [ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/inventory/items/assets/items.png" id="3_ibh2y"]
 [ext_resource type="AudioStream" uid="uid://b6ecclhfygeu7" path="res://src/interactables/treasure_chest/treasure-open.wav" id="4_lqrgg"]
+[ext_resource type="PackedScene" uid="uid://cf7c4t048extk" path="res://src/shared/persistence/persistence_node.tscn" id="5_0j4ra"]
 
 [sub_resource type="Animation" id="Animation_7l6gc"]
 length = 0.001
@@ -69,34 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ItemSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_fwlvo"]
-resource_name = "opened"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ChestSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -178,6 +151,34 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fwlvo"]
+resource_name = "opened"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChestSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d1qhi"]
 _data = {
 "RESET": SubResource("Animation_7l6gc"),
@@ -216,7 +217,6 @@ offset_bottom = 12.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 10
-text = "x22"
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -248,3 +248,5 @@ monitorable = false
 position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_j3eny")
 debug_color = Color(0, 0.641261, 0.337123, 0.42)
+
+[node name="IsOpen" parent="." instance=ExtResource("5_0j4ra")]

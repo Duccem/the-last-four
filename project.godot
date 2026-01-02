@@ -21,7 +21,7 @@ LevelManager="*res://src/world/level/level_manager.gd"
 PlayerHud="*res://src/player/player_hud.tscn"
 SceneTransition="*res://src/shared/transitions/scene_transition.tscn"
 PlayerManager="*res://src/player/scripts/player_manager.gd"
-SaveManager="*res://src/shared/save_manager.gd"
+SaveManager="*res://src/shared/persistence/save_manager.gd"
 Menu="*res://src/shared/menu/menu.tscn"
 
 [input]

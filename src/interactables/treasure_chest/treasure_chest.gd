@@ -5,6 +5,7 @@ class_name TreasureChest extends Node2D
 @onready var label: Label = $ItemSprite/Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var interact_area: Area2D = $Area2D
+@onready var is_open_data: PersistenceNode = $IsOpen
 
 @export var item: Item:
   set(value):
@@ -34,6 +35,8 @@ func _ready() -> void:
     return
   interact_area.area_entered.connect( _on_area_enter )
   interact_area.area_exited.connect( _on_area_exit )
+  is_open_data.data_loaded.connect( set_chest_state )
+  set_chest_state()
 
 func player_interact() -> void:
   if is_open == true:
@@ -41,8 +44,16 @@ func player_interact() -> void:
   if not item:
     return
   is_open = true
+  is_open_data.set_value()
   animation_player.play("open_chest")
   PlayerManager.INVENTORY.add_item( item, quantity )
+
+func set_chest_state() -> void:
+  is_open = is_open_data.value
+  if is_open:
+    animation_player.play("opened")
+  else:
+    animation_player.play("closed")
 
 
 func _on_area_enter( _a : Area2D ) -> void:

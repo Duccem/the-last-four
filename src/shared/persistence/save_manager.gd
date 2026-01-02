@@ -16,6 +16,7 @@ var save_data: Dictionary = {
   items = [],
   abilities = [],
   quests = [],
+  persistence = [],
 }
 
 
@@ -66,3 +67,15 @@ func update_scene_path() -> void:
 
 func update_inventory_data() -> void:
   save_data.items = PlayerManager.INVENTORY.inventory_to_primitives()
+
+func add_persistent_value(value : String) -> void:
+  if check_persistent_value(value) == false:
+    save_data.persistence.append(value)
+
+func remove_persistent_value(value : String) -> void:
+  var p = save_data.persistence as Array
+  p.erase(value)
+
+func check_persistent_value(value : String) -> bool:
+  var p = save_data.persistence as Array
+  return p.has(value)
