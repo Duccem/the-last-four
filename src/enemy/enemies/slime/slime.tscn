@@ -1,6 +1,6 @@
-[gd_scene load_steps=59 format=3 uid="uid://chngrknv0vy18"]
+[gd_scene load_steps=62 format=3 uid="uid://chngrknv0vy18"]
 
-[ext_resource type="Script" path="res://src/enemy/shared/enemy.gd" id="1_3prb0"]
+[ext_resource type="Script" path="res://src/enemy/shared/enemy.gd" id="1_6jtl6"]
 [ext_resource type="Texture2D" uid="uid://dr8gwpuupso51" path="res://src/enemy/enemies/slime/slime.png" id="1_xm2ry"]
 [ext_resource type="Script" path="res://src/enemy/shared/enemy_state_machine.gd" id="3_l0v3b"]
 [ext_resource type="Script" path="res://src/enemy/shared/states/idle_state.gd" id="4_ipky7"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://src/enemy/shared/states/hurt_state.gd" id="7_knuks"]
 [ext_resource type="Script" path="res://src/enemy/shared/states/death_state.gd" id="8_32jnt"]
 [ext_resource type="AudioStream" uid="uid://b0xjphroljt4p" path="res://src/enemy/enemies/slime/hit_00.wav" id="8_vevwi"]
+[ext_resource type="Resource" uid="uid://dynuux8e8pqio" path="res://src/inventory/items/resources/items/gem.tres" id="10_8q88h"]
 [ext_resource type="PackedScene" uid="uid://lfmfgs4jioxn" path="res://src/shared/hurt_box/hurtbox.tscn" id="10_tq8y8"]
+[ext_resource type="Script" path="res://src/enemy/shared/drop.gd" id="11_vtpsd"]
 [ext_resource type="Script" path="res://src/enemy/shared/enemy_animations_controller.gd" id="12_dp53k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wuv8"]
@@ -494,6 +496,13 @@ states/walk/node = SubResource("AnimationNodeBlendSpace2D_p4k06")
 states/walk/position = Vector2(406, 83)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bf4bn"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_gggn4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_m6tyg"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_y4w68"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_vxoel"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_ppin1"), "hurt", "walk", SubResource("AnimationNodeStateMachineTransition_js3rs"), "hurt", "death", SubResource("AnimationNodeStateMachineTransition_srmdq"), "death", "hurt", SubResource("AnimationNodeStateMachineTransition_0ujer")]
 
+[sub_resource type="Resource" id="Resource_2a0a2"]
+script = ExtResource("11_vtpsd")
+item = ExtResource("10_8q88h")
+probability = 100.0
+min_amount = 1
+max_amount = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cym2m"]
 radius = 64.0078
 
@@ -506,7 +515,7 @@ radius = 5.0
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 16
-script = ExtResource("1_3prb0")
+script = ExtResource("1_6jtl6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.717647)
@@ -551,6 +560,9 @@ hurt_sound = ExtResource("8_vevwi")
 
 [node name="death_state" type="Node" parent="state_machine"]
 script = ExtResource("8_32jnt")
+drops = Array[ExtResource("11_vtpsd")]([SubResource("Resource_2a0a2")])
+knockback_speed = null
+decelerate_speed = null
 
 [node name="interactions" type="Node2D" parent="."]
 

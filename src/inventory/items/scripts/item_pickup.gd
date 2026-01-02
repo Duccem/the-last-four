@@ -1,5 +1,5 @@
 @tool
-class_name ItemPickup extends Node2D
+class_name ItemPickup extends CharacterBody2D
 
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -13,6 +13,12 @@ func _ready() -> void:
   if Engine.is_editor_hint():
     return
   area_2d.body_entered.connect(_on_body_entered)
+
+func _physics_process(delta: float) -> void:
+  var collision_info = move_and_collide( velocity * delta )
+  if collision_info:
+    velocity = velocity.bounce(collision_info.get_normal())
+  velocity -= velocity * delta * 8
 
 func _set_item(value: Item) -> void:
   item = value

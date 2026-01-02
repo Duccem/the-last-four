@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk8dpq4pk3dq4"]
+[gd_scene load_steps=16 format=3 uid="uid://bk8dpq4pk3dq4"]
 
 [ext_resource type="Script" path="res://src/world/level/level.gd" id="1_edhoh"]
 [ext_resource type="Texture2D" uid="uid://c27rkxktpbwbs" path="res://src/world/map/sprites/mystic wood/tilesets/fences.png" id="2_8h7sb"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://chngrknv0vy18" path="res://src/enemy/enemies/slime/slime.tscn" id="8_47kuo"]
 [ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/level/spawn/spawn.tscn" id="9_b2vph"]
 [ext_resource type="PackedScene" uid="uid://cfaq07vawumxc" path="res://src/world/level/level_transition.tscn" id="10_5rm87"]
-[ext_resource type="PackedScene" uid="uid://d1wiugbspfk6f" path="res://src/inventory/items/scenes/item_pickup.tscn" id="11_866s0"]
-[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/inventory/items/resources/items/potion.tres" id="12_acjhk"]
-[ext_resource type="Resource" uid="uid://dynuux8e8pqio" path="res://src/inventory/items/resources/items/gem.tres" id="13_ortoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kidb"]
 resource_name = "fences"
@@ -726,12 +723,6 @@ script = ExtResource("6_vp6g0")
 [node name="Cartel" parent="." instance=ExtResource("7_y6n1q")]
 position = Vector2(1711, 331)
 
-[node name="Cartel2" parent="." instance=ExtResource("7_y6n1q")]
-position = Vector2(1831, 516)
-
-[node name="Cartel3" parent="." instance=ExtResource("7_y6n1q")]
-position = Vector2(1201, 508)
-
 [node name="Slime" parent="." instance=ExtResource("8_47kuo")]
 position = Vector2(1801, 503)
 
@@ -739,19 +730,9 @@ position = Vector2(1801, 503)
 position = Vector2(1711, 517)
 
 [node name="second_level_transition" parent="." instance=ExtResource("10_5rm87")]
-position = Vector2(1819, 606)
+position = Vector2(1824, 608)
 target_level = "res://src/world/level/levels/second_level.tscn"
 target_transition_point = "first_level_transition"
 size = 3
 side = 3
 snap_to_grid = true
-
-[node name="ItemPickup" parent="." instance=ExtResource("11_866s0")]
-position = Vector2(1735, 487)
-item = ExtResource("12_acjhk")
-quantity = 2
-
-[node name="ItemPickup2" parent="." instance=ExtResource("11_866s0")]
-position = Vector2(1757, 521)
-item = ExtResource("13_ortoh")
-quantity = 1
