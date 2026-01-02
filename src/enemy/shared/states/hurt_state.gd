@@ -1,4 +1,4 @@
-class_name SlimeHurtState
+class_name EnemyHurtState
 extends EnemyState
 
 @export var recovery_fallback: float = 0.5

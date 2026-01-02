@@ -1,4 +1,4 @@
-class_name SlimeDeathState extends EnemyState
+class_name EnemyDeathState extends EnemyState
 
 var animation_finished: bool = false
 

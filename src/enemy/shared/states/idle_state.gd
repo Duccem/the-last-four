@@ -1,4 +1,4 @@
-class_name SlimeIdleState
+class_name EnemyIdleState
 extends EnemyState
 
 @onready var walk: EnemyState = $"../walk_state"

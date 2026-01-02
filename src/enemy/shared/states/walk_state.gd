@@ -1,4 +1,4 @@
-class_name SlimeWalkState
+class_name EnemyWalkState
 extends EnemyState
 @export var speed: float = 20
 
@@ -9,7 +9,7 @@ var on_range: bool = false
 var is_hurt: bool = false
 
 func enter() -> void:
-	enemy.anim_state.travel("jump")
+	enemy.anim_state.travel("walk")
 	enemy.agro_range.body_exited.connect(_on_enter_range)
 	enemy.hit_box.damaged.connect(_on_damaged)
 

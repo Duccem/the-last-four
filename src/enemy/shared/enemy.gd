@@ -3,6 +3,7 @@ class_name  Enemy extends CharacterBody2D
 @onready var state_machine: EnemyStateMachine = $state_machine
 @onready var anim_tree: AnimationTree = $animator_tree
 @onready var animation_controller: EnemyAnimationsController = $"animations_controller"
+@onready var agro_range: Area2D = $"interactions/agro_range"
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
 @onready var hit_box: Hitbox = $"interactions/hit_box"
@@ -28,7 +29,12 @@ func _physics_process(_delta: float) -> void:
   move_and_slide()
 
 func update_movement_input() -> void:
-  pass
+  if player == null:
+    direction = Vector2.ZERO
+    return
+	
+  var to_player: Vector2 = (player.global_position - global_position).normalized()
+  direction = to_player
 
 func take_damage(damage: int) -> void:
   if invulnerable:

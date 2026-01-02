@@ -1,4 +1,4 @@
-class_name SlimeWanderState
+class_name EnemyWanderState
 extends EnemyState
 
 @export var speed: float = 12.0
