@@ -854,7 +854,6 @@ visible = false
 texture = ExtResource("5_lc7t1")
 hframes = 8
 vframes = 8
-frame = 7
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("3_0b858")

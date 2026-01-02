@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be4tl6ak7art4"
-path="res://.godot/imported/skeleton.png-921eaf68cc2c2658d9ade80ed4bcf008.ctex"
+path="res://.godot/imported/skeleton.png-16aa60c924dc29326508a351d21961d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/world/map/sprites/mystic wood/characters/skeleton.png"
-dest_files=["res://.godot/imported/skeleton.png-921eaf68cc2c2658d9ade80ed4bcf008.ctex"]
+source_file="res://src/enemy/enemies/skeleton/skeleton.png"
+dest_files=["res://.godot/imported/skeleton.png-16aa60c924dc29326508a351d21961d6.ctex"]
 
 [params]
 

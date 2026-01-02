@@ -9,6 +9,9 @@ const PICKUP = preload("res://src/inventory/items/scenes/item_pickup.tscn")
 @export var knockback_speed : float = 200.0
 @export var decelerate_speed : float = 10.0
 
+func init() -> void:
+  enemy.enemy_died.connect(_on_enemy_died)
+
 func enter() -> void:
   enemy.velocity = enemy.direction * -knockback_speed
   _drop_items()
@@ -31,7 +34,10 @@ func _drop_items() -> void:
     var drop_count: int = drops[index].get_drop_count()
     for i in drop_count:
       var drop : ItemPickup = PICKUP.instantiate() as ItemPickup
-      drop.item = drops[ i ].item
+      drop.item = drops[ index ].item
       enemy.get_parent().call_deferred( "add_child", drop )
       drop.global_position = enemy.global_position
       drop.velocity = enemy.velocity.rotated( randf_range( -1.5, 1.5 ) )
+
+func _on_enemy_died(_box: Hurtbox) -> void:
+  state_machine.change_state(self)

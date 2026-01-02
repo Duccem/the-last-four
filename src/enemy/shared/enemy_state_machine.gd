@@ -25,6 +25,8 @@ func initialize(enemy: Enemy) -> void:
 
 	for state in states:
 		state.enemy = enemy
+		state.state_machine = self
+		state.init()
 			
 	if states.size() > 0:
 		change_state(states[0])
@@ -33,7 +35,6 @@ func initialize(enemy: Enemy) -> void:
 func change_state(new_state: EnemyState) -> void:
 	if new_state == null || new_state == current_state:
 		return
-	
 	if current_state:
 		current_state.exit()
 	
