@@ -2,7 +2,6 @@ class_name StateAttack extends PlayerState
 
 @onready var idle: PlayerState = $"../idle_state"
 @onready var walk: PlayerState = $"../walk_state"
-@onready var spear_hurt_box: Hurtbox = $"../../interactions/spear_hurtbox"
 
 @export_range(1, 20, 0.5) var decelerate: float = 5.0
 @export var attack_sound: AudioStream
@@ -20,7 +19,7 @@ func enter() -> void:
   player.audio.stream = attack_sound
   player.audio.pitch_scale = randf_range(0.9, 1.1)
   player.audio.play()
-  spear_hurt_box.monitoring = true
+  player.spear_hit_box.monitoring = true
   
 func process(_delta: float) -> PlayerState:
   player.velocity -= player.velocity * decelerate * _delta
@@ -33,7 +32,7 @@ func process(_delta: float) -> PlayerState:
 
 func exit() -> void:
   player.anim_tree.animation_finished.disconnect(_on_animation_finished)
-  spear_hurt_box.monitoring = false
+  player.spear_hit_box.monitoring = false
 
 func _on_animation_finished(_anim_name: String) -> void:
   attacking = false

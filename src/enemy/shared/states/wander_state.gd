@@ -62,7 +62,7 @@ func pick_new_direction() -> void:
 		enemy.anim_state.travel("idle")
 	else:
 		direction = direction.normalized()
-		enemy.anim_state.travel("jump")
+		enemy.anim_state.travel("walk")
 		enemy.animation_controller.set_animation_direction(direction)
 
 func _on_damaged(_hurt_box: Hurtbox) -> void:

@@ -30,6 +30,8 @@ func process(_delta: float) -> PlayerState:
 func handle_input(event: InputEvent) -> PlayerState:
 	if event.is_action_pressed("player_attack"):
 		return attack
+	if event.is_action_pressed("player_interact"):
+		PlayerManager.interacted.emit()
 	return null
 
 func exit():

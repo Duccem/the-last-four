@@ -6,8 +6,9 @@ class_name Player
 @onready var anim_tree: AnimationTree = $animator_tree
 @onready var anim_player: AnimationPlayer = $animator
 @onready var anim_state: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
-@onready var hit_box: Hitbox = $"interactions/hit_box"
-@onready var spear_hit_box: Hurtbox = $"interactions/spear_hurtbox"
+@onready var hit_box: Hitbox = $"hit_box"
+@onready var spear_hit_box: Hurtbox = $"attacks/spear"
+@onready var interaction_area: PlayerInteractions = $"interactions"
 
 @export var health_points: int = 12
 @export var max_health_points: int = 12
@@ -25,12 +26,7 @@ func _ready():
   PlayerHud.update_hp(health_points, max_health_points)
 
 func _process(_delta) -> void:
-  health_regeneration_timer += _delta
-  if health_regeneration_timer >= health_regeneration_rate:
-    health_regeneration_timer = 0.0
-    if health_points < max_health_points:
-      health_points += 1
-      PlayerHud.update_hp(health_points, max_health_points)
+  health_regeneration(_delta)
   update_movement_input()
 
 func _physics_process(_delta) -> void:
@@ -38,6 +34,7 @@ func _physics_process(_delta) -> void:
 
 func update_movement_input() -> void:
   direction = Input.get_vector("player_left", "player_right", "player_up", "player_down").normalized()
+  interaction_area.update_direction(direction)
 
 func take_damage(damage_amount: int) -> void:
   if invulnerable:
@@ -57,3 +54,11 @@ func make_invulnerable(duration: float) -> void:
 func update_hp(amount: int) -> void:
   health_points = clamp(health_points + amount, 0, max_health_points)
   PlayerHud.update_hp(health_points, max_health_points)
+
+func health_regeneration(delta: float) -> void:
+  health_regeneration_timer += delta
+  if health_regeneration_timer >= health_regeneration_rate:
+    health_regeneration_timer = 0.0
+    if health_points < max_health_points:
+      health_points += 1
+      PlayerHud.update_hp(health_points, max_health_points)

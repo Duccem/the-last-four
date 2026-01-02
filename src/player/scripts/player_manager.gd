@@ -2,9 +2,12 @@ extends Node
 
 const PLAYER = preload("res://src/player/player.tscn")
 const INVENTORY: Inventory = preload("res://src/inventory/shared/resources/player_inventory.tres")
-var player: Player
 
+var player: Player
 var player_spawned: bool = false
+var interact_handled : bool = true
+
+signal interacted
 
 func _ready():
   add_player_instance()
@@ -28,3 +31,7 @@ func set_parent_node(new_parent: Node) -> void:
 
 func un_parent_player(_p: Node2D) -> void:
   _p.remove_child(player)
+
+func interact()-> void:
+  interact_handled = false
+  interacted.emit()

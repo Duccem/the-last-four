@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk8dpq4pk3dq4"]
+[gd_scene load_steps=18 format=3 uid="uid://bk8dpq4pk3dq4"]
 
 [ext_resource type="Script" path="res://src/world/level/level.gd" id="1_edhoh"]
 [ext_resource type="Texture2D" uid="uid://c27rkxktpbwbs" path="res://src/world/map/sprites/mystic wood/tilesets/fences.png" id="2_8h7sb"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://chngrknv0vy18" path="res://src/enemy/enemies/slime/slime.tscn" id="8_47kuo"]
 [ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/level/spawn/spawn.tscn" id="9_b2vph"]
 [ext_resource type="PackedScene" uid="uid://cfaq07vawumxc" path="res://src/world/level/level_transition.tscn" id="10_5rm87"]
+[ext_resource type="PackedScene" uid="uid://cqud063ap72nb" path="res://src/interactables/treasure_chest/treasure_chest.tscn" id="11_f3pce"]
+[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/inventory/items/resources/items/potion.tres" id="12_v16uf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kidb"]
 resource_name = "fences"
@@ -736,3 +738,8 @@ target_transition_point = "first_level_transition"
 size = 3
 side = 3
 snap_to_grid = true
+
+[node name="TreasureChest" parent="." instance=ExtResource("11_f3pce")]
+position = Vector2(1750, 494)
+item = ExtResource("12_v16uf")
+quantity = 99

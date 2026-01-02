@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b4ox1qu2uxyu6"]
+[gd_scene load_steps=75 format=3 uid="uid://b4ox1qu2uxyu6"]
 
 [ext_resource type="Script" path="res://src/player/scripts/player.gd" id="1_lc47q"]
 [ext_resource type="Script" path="res://src/player/scripts/animation_controller.gd" id="2_e5vep"]
@@ -15,15 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/shared/hit_box/hitbox.tscn" id="12_lb3r6"]
 [ext_resource type="AudioStream" uid="uid://su2i6k644jdf" path="res://src/player/assets/sounds/hit_player.wav" id="12_ofr7i"]
 [ext_resource type="Script" path="res://src/player/scripts/player_camera.gd" id="15_geoje"]
+[ext_resource type="Script" path="res://src/player/scripts/player_interactions.gd" id="16_n5xca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kv82q"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky06l"]
+radius = 5.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcldw"]
 size = Vector2(8, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ky06l"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_dk5s4"]
 
 [sub_resource type="Animation" id="Animation_p5gop"]
 length = 0.001
@@ -54,7 +57,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/2/path = NodePath("attacks/spear:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -66,7 +69,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("interactions/spear_hurtbox:position")
+tracks/3/path = NodePath("attacks/spear:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -118,7 +121,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:position")
+tracks/1/path = NodePath("attacks/spear:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -130,7 +133,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/2/path = NodePath("attacks/spear:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -158,7 +161,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -170,7 +173,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -198,7 +201,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -210,7 +213,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -238,7 +241,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -250,7 +253,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -278,7 +281,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -290,7 +293,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -318,7 +321,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -330,7 +333,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -358,7 +361,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -370,7 +373,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -398,7 +401,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("interactions/spear_hurtbox:rotation")
+tracks/1/path = NodePath("attacks/spear:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -410,7 +413,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("interactions/spear_hurtbox:position")
+tracks/2/path = NodePath("attacks/spear:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -822,6 +825,14 @@ script = ExtResource("1_lc47q")
 position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_kv82q")
 
+[node name="hit_box" parent="." instance=ExtResource("12_lb3r6")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ky06l")
+debug_color = Color(0.995856, 0.0566952, 5.77569e-07, 0.42)
+
 [node name="animations" type="Node2D" parent="."]
 script = ExtResource("2_e5vep")
 
@@ -843,7 +854,7 @@ visible = false
 texture = ExtResource("5_lc7t1")
 hframes = 8
 vframes = 8
-frame = 37
+frame = 7
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("3_0b858")
@@ -856,6 +867,7 @@ script = ExtResource("5_h51ri")
 
 [node name="attack_state" type="Node" parent="state_machine"]
 script = ExtResource("9_8b80n")
+decelerate = null
 attack_sound = ExtResource("10_ng0tv")
 
 [node name="hurt_state" type="Node" parent="state_machine"]
@@ -863,28 +875,32 @@ script = ExtResource("11_m6kus")
 recovery_fallback = 0.3
 hurt_sound = ExtResource("12_ofr7i")
 
-[node name="interactions" type="Node2D" parent="."]
+[node name="attacks" type="Node2D" parent="."]
 
-[node name="spear_hurtbox" parent="interactions" instance=ExtResource("10_e27i1")]
+[node name="spear" parent="attacks" instance=ExtResource("10_e27i1")]
 collision_mask = 256
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/spear_hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attacks/spear"]
 scale = Vector2(1, 1.28)
 shape = SubResource("RectangleShape2D_wcldw")
 debug_color = Color(0.986015, 0, 0.327941, 0.42)
 
-[node name="hit_box" parent="interactions" instance=ExtResource("12_lb3r6")]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/hit_box"]
-position = Vector2(1, 1)
-shape = SubResource("CircleShape2D_ky06l")
-debug_color = Color(0.995856, 0.0566952, 5.77569e-07, 0.42)
-
 [node name="audio" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="audio"]
+
+[node name="interactions" type="Node2D" parent="."]
+script = ExtResource("16_n5xca")
+
+[node name="Area2D" type="Area2D" parent="interactions"]
+position = Vector2(0, 10)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactions/Area2D"]
+shape = SubResource("CircleShape2D_dk5s4")
 
 [node name="animator" type="AnimationPlayer" parent="."]
 libraries = {
