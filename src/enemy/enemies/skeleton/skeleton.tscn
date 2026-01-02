@@ -735,14 +735,14 @@ max_amount = 4
 [sub_resource type="CircleShape2D" id="CircleShape2D_c54fi"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cym2m"]
-radius = 88.0057
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbu8g"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydg0c"]
 radius = 19.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fbu8g"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ae5sl"]
+radius = 88.0057
 
 [node name="Skeleton" type="CharacterBody2D"]
 collision_layer = 256
@@ -806,28 +806,15 @@ attack_range = NodePath("../../attack_range")
 attack_sound = ExtResource("14_jd2aa")
 
 [node name="hit_box" parent="." instance=ExtResource("15_xaidd")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_c54fi")
 debug_color = Color(0.956724, 0, 0.536406, 0.42)
 
-[node name="agro_range" type="Area2D" parent="."]
-script = ExtResource("16_qqg0r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="agro_range"]
-shape = SubResource("CircleShape2D_cym2m")
-debug_color = Color(0, 0.64873, 0.170823, 0.42)
-
-[node name="attack_range" type="Area2D" parent="."]
-position = Vector2(-1, -6)
-script = ExtResource("16_qqg0r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
-shape = SubResource("CircleShape2D_ydg0c")
-debug_color = Color(0.759401, 0.4529, 0, 0.42)
-
 [node name="hurt_box" parent="." instance=ExtResource("17_sljwj")]
+visible = false
 collision_mask = 2
 monitoring = false
 
@@ -835,6 +822,23 @@ monitoring = false
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_fbu8g")
 debug_color = Color(0.483781, 0.435883, 1, 0.42)
+
+[node name="attack_range" type="Area2D" parent="."]
+visible = false
+position = Vector2(-1, -6)
+script = ExtResource("16_qqg0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+shape = SubResource("CircleShape2D_ydg0c")
+debug_color = Color(0.759401, 0.4529, 0, 0.42)
+
+[node name="agro_range" type="Area2D" parent="."]
+position = Vector2(0, -6)
+script = ExtResource("16_qqg0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="agro_range"]
+shape = SubResource("CircleShape2D_ae5sl")
+debug_color = Color(0, 0.626474, 0.510827, 0.42)
 
 [node name="animations_controller" type="Node2D" parent="."]
 script = ExtResource("18_cu1d1")

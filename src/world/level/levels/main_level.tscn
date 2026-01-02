@@ -728,6 +728,7 @@ position = Vector2(1782, 482)
 
 [node name="Slime" parent="." instance=ExtResource("8_47kuo")]
 position = Vector2(1818, 544)
+health_points = 3
 
 [node name="Spawn" parent="." instance=ExtResource("9_b2vph")]
 position = Vector2(1711, 517)

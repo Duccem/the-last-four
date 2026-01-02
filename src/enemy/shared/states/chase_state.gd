@@ -20,6 +20,10 @@ func enter() -> void:
 func process(_delta: float) -> EnemyState:
 	if on_range == false:
 		return idle
+
+	var to_player: Vector2 = (enemy.player.global_position - enemy.global_position).normalized()
+	enemy.direction = to_player
+	enemy.changed_direction.emit(enemy.direction)
 	
 	enemy.velocity = enemy.direction.normalized() * speed
 	enemy.animation_controller.set_animation_direction(enemy.direction)
@@ -33,5 +37,6 @@ func _on_player_entered() -> void:
 	state_machine.change_state(self)
 
 func _on_exit_range() -> void:
+	print("Player exited agro range")
 	on_range = false
 

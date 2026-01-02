@@ -13,6 +13,7 @@ class_name  Enemy extends CharacterBody2D
 
 signal enemy_died(box: Hurtbox)
 signal enemy_hurt(box: Hurtbox)
+signal changed_direction(new_direction: Vector2)
 
 var player: Player
 
@@ -25,20 +26,12 @@ func _ready():
   animation_controller.initialize(self)
   hit_box.damaged.connect(take_damage)
 
-func _process(_delta) -> void:
-  update_movement_input()
-
 func _physics_process(_delta: float) -> void:
-  move_and_slide()
-
-func update_movement_input() -> void:
   if player == null:
     direction = Vector2.ZERO
     return
-	
-  var to_player: Vector2 = (player.global_position - global_position).normalized()
-  direction = to_player
-
+  move_and_slide()
+  
 func take_damage(box: Hurtbox) -> void:
   if invulnerable:
     return
