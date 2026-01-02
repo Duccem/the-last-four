@@ -8,11 +8,11 @@
 [ext_resource type="Script" path="res://src/world/map/tile_map.gd" id="6_vp6g0"]
 [ext_resource type="PackedScene" uid="uid://cfvr4pe7hko5k" path="res://src/world/props/cartel.tscn" id="7_y6n1q"]
 [ext_resource type="PackedScene" uid="uid://chngrknv0vy18" path="res://src/enemy/enemies/slime/slime.tscn" id="8_47kuo"]
-[ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/spawn/spawn.tscn" id="9_b2vph"]
+[ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/level/spawn/spawn.tscn" id="9_b2vph"]
 [ext_resource type="PackedScene" uid="uid://cfaq07vawumxc" path="res://src/world/level/level_transition.tscn" id="10_5rm87"]
-[ext_resource type="PackedScene" uid="uid://d1wiugbspfk6f" path="res://src/items/item_pickup.tscn" id="11_866s0"]
-[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/items/items/potion/potion.tres" id="12_acjhk"]
-[ext_resource type="Resource" uid="uid://dynuux8e8pqio" path="res://src/items/items/gem.tres" id="13_ortoh"]
+[ext_resource type="PackedScene" uid="uid://d1wiugbspfk6f" path="res://src/inventory/items/scenes/item_pickup.tscn" id="11_866s0"]
+[ext_resource type="Resource" uid="uid://b2doi8cvc2sui" path="res://src/inventory/items/resources/items/potion.tres" id="12_acjhk"]
+[ext_resource type="Resource" uid="uid://dynuux8e8pqio" path="res://src/inventory/items/resources/items/gem.tres" id="13_ortoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kidb"]
 resource_name = "fences"

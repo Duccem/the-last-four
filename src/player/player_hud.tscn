@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://0xs1bw2hycl3"]
+
+[ext_resource type="Script" path="res://src/player/scripts/player_hud.gd" id="1_cg585"]
+[ext_resource type="PackedScene" uid="uid://s0082nnnm3ek" path="res://src/player/heart_gui.tscn" id="2_s22py"]
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_cg585")
+heart_prefab = ExtResource("2_s22py")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_top = 26.0
+offset_right = -224.0
+offset_bottom = 26.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="heart_container" type="HFlowContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 188.0
+offset_bottom = 27.0
+grow_horizontal = 0
+theme_override_constants/h_separation = 5
+alignment = 2

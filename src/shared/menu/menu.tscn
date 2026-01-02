@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://drap25nf4x2n0"]
+
+[ext_resource type="Script" path="res://src/shared/menu/menu.gd" id="1_t4ro8"]
+[ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/inventory/items/assets/items.png" id="2_kq25f"]
+[ext_resource type="PackedScene" uid="uid://d3jgvo5iajxyd" path="res://src/inventory/gui/scenes/slot_gui.tscn" id="3_art1i"]
+[ext_resource type="Script" path="res://src/inventory/gui/scripts/inventory_ui.gd" id="3_y3boj"]
+[ext_resource type="Resource" uid="uid://di6b01vdjslgs" path="res://src/inventory/shared/resources/player_inventory.tres" id="4_rev2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlfbv"]
+atlas = ExtResource("2_kq25f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_02w1m"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_xlfbv")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_t4ro8")
+
+[node name="wrap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="wrap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 0.666667)
+
+[node name="Container" type="HBoxContainer" parent="wrap"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -69.0
+offset_right = 196.0
+offset_bottom = -36.0
+grow_vertical = 0
+
+[node name="ButtonSave" type="Button" parent="wrap/Container"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="ButtonLoad" type="Button" parent="wrap/Container"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Load"
+
+[node name="ButtonExit" type="Button" parent="wrap/Container"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Exit"
+
+[node name="Label" type="Label" parent="wrap"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 209.0
+offset_right = 106.0
+offset_bottom = 232.0
+text = "[ Menu ]"
+
+[node name="PanelContainer" type="PanelContainer" parent="wrap"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 281.0
+offset_right = 239.0
+offset_bottom = 369.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_02w1m")
+
+[node name="GridContainer" type="GridContainer" parent="wrap/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_y3boj")
+data = ExtResource("4_rev2b")
+
+[node name="SlotGui" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui2" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui3" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui4" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui5" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui6" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui7" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui8" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui9" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="SlotGui10" parent="wrap/PanelContainer/GridContainer" instance=ExtResource("3_art1i")]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="wrap"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 373.0
+offset_right = 235.0
+offset_bottom = 396.0
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="wrap"]

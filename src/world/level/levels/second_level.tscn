@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpuduhsy1l5ch" path="res://src/world/map/maps/tiles_map.tscn" id="1_aclgy"]
 [ext_resource type="Script" path="res://src/world/level/level.gd" id="1_ikbma"]
-[ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/spawn/spawn.tscn" id="2_bxu82"]
+[ext_resource type="PackedScene" uid="uid://dvue2bbln8pg3" path="res://src/world/level/spawn/spawn.tscn" id="2_bxu82"]
 [ext_resource type="PackedScene" uid="uid://cfaq07vawumxc" path="res://src/world/level/level_transition.tscn" id="5_uctr7"]
 
 [node name="SecondLevel" type="Node2D"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3jgvo5iajxyd"]
+
+[ext_resource type="Script" path="res://src/inventory/gui/scripts/slot_ui.gd" id="1_2ur6g"]
+[ext_resource type="Texture2D" uid="uid://j5oniv2ta7ok" path="res://src/inventory/items/assets/items.png" id="1_32atj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui2ux"]
+atlas = ExtResource("1_32atj")
+region = Rect2(0, 0, 32, 32)
+
+[node name="SlotGui" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.5
+offset_right = -1120.0
+offset_bottom = -616.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ur6g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_ui2ux")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 2

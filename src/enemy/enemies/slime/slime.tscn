@@ -1,7 +1,7 @@
 [gd_scene load_steps=59 format=3 uid="uid://chngrknv0vy18"]
 
 [ext_resource type="Script" path="res://src/enemy/enemies/slime/scripts/slime.gd" id="1_6nduj"]
-[ext_resource type="Texture2D" uid="uid://dr8gwpuupso51" path="res://src/enemy/enemies/slime/sprites/slime.png" id="1_xm2ry"]
+[ext_resource type="Texture2D" uid="uid://dr8gwpuupso51" path="res://src/enemy/enemies/slime/assets/sprites/slime.png" id="1_xm2ry"]
 [ext_resource type="Script" path="res://src/enemy/shared/enemy_state_machine.gd" id="3_l0v3b"]
 [ext_resource type="Script" path="res://src/enemy/enemies/slime/scripts/slime_animations_controller.gd" id="4_1he3a"]
 [ext_resource type="Script" path="res://src/enemy/enemies/slime/scripts/states/idle_state.gd" id="4_ipky7"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://chp4s4sdxdsek" path="res://src/shared/hit_box/hitbox.tscn" id="7_dx876"]
 [ext_resource type="Script" path="res://src/enemy/enemies/slime/scripts/states/hurt_state.gd" id="7_knuks"]
 [ext_resource type="Script" path="res://src/enemy/enemies/slime/scripts/states/death_state.gd" id="8_32jnt"]
-[ext_resource type="AudioStream" uid="uid://b0xjphroljt4p" path="res://src/enemy/enemies/slime/sounds/hit_00.wav" id="8_vevwi"]
+[ext_resource type="AudioStream" uid="uid://b0xjphroljt4p" path="res://src/enemy/enemies/slime/assets/sounds/hit_00.wav" id="8_vevwi"]
 [ext_resource type="PackedScene" uid="uid://lfmfgs4jioxn" path="res://src/shared/hurt_box/hurtbox.tscn" id="10_tq8y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wuv8"]
