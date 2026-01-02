@@ -723,10 +723,10 @@ layer_5/tile_data = PackedInt32Array(655431, 131072, 3, 655432, 131072, 3, 65543
 script = ExtResource("6_vp6g0")
 
 [node name="Cartel" parent="." instance=ExtResource("7_y6n1q")]
-position = Vector2(1711, 331)
+position = Vector2(1782, 482)
 
 [node name="Slime" parent="." instance=ExtResource("8_47kuo")]
-position = Vector2(1801, 503)
+position = Vector2(1818, 544)
 
 [node name="Spawn" parent="." instance=ExtResource("9_b2vph")]
 position = Vector2(1711, 517)
@@ -740,6 +740,6 @@ side = 3
 snap_to_grid = true
 
 [node name="TreasureChest" parent="." instance=ExtResource("11_f3pce")]
-position = Vector2(1750, 494)
+position = Vector2(1698, 486)
 item = ExtResource("12_v16uf")
 quantity = 99
